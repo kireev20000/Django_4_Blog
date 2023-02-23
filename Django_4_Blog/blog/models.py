@@ -27,7 +27,7 @@ class Post(models.Model):
     )
     publish = models.DateTimeField(
         'Дата публикации',
-        default=timezone.now
+        default=timezone.now,
     )
     created = models.DateTimeField(
         'Дата создания',
@@ -35,7 +35,8 @@ class Post(models.Model):
     )
     updated = models.DateTimeField(
         'Дата последнего изменения',
-        auto_now=True)
+        auto_now=True,
+    )
     status = models.CharField(
         'Статус',
         max_length=2,
