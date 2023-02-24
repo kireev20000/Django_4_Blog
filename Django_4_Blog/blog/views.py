@@ -1,3 +1,6 @@
+"""Вью-сет приложения Post."""
+
 from django.shortcuts import render
 
-# Create your views here.
+
+

@@ -1,11 +1,25 @@
+"""Модели для приложения Post."""
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
 
+class PublishedManager(models.Manager):
+    """Кастомный менеджер для вывода кварисета со статусом опубликовано."""
+
+    def get_queryset(self):
+        """Возвращает кастомный кварисет с опубликоваными постами."""
+        return super().get_queryset()\
+                      .filter(status=Post.Status.PUBLISHED)
+
+
 class Post(models.Model):
+    """Модель Post для блога."""
 
     class Status(models.TextChoices):
+        """Захардкоженные статусы поста."""
+
         DRAFT = 'DF', 'Draft'
         PUBLISHED = 'PB', 'Published'
 
@@ -44,7 +58,12 @@ class Post(models.Model):
         default=Status.DRAFT,
     )
 
+    objects = models.Manager()
+    published = PublishedManager()
+
     class Meta:
+        """Обожаю Flake8 тут. Класс мета модели пост."""
+
         ordering = ['-publish']
         indexes = [
             models.Index(fields=['-publish'])
@@ -53,4 +72,5 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
 
     def __str__(self):
+        """Возвращает заголовок поста."""
         return self.title
