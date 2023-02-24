@@ -58,6 +58,7 @@ class Post(models.Model):
         default=Status.DRAFT,
     )
 
+    # первый объявленый менеджер становится дефолтным
     objects = models.Manager()
     published = PublishedManager()
 
