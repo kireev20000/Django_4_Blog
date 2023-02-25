@@ -1,11 +1,11 @@
 """Вью-сет приложения Post."""
-from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 
 from .models import Post
 
 
 def post_list(request):
+    """Возвращает все посты блога на страницу."""
     posts = Post.published.all()
     return render(request,
                   'blog/post/list.html',
@@ -13,6 +13,7 @@ def post_list(request):
 
 
 def post_detail(request, id):
+    """Возвращает выбранный пост по ID."""
     post = get_object_or_404(Post,
                              id=id,
                              status=Post.Status.PUBLISHED)

@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% block title %} Мой блог на Джанге 4! {% endblock %}
+
+{% block content %}
+  <h2>Самый лучший Блог!</h2>
+  {% for post in posts %}
+    <h2>
+      <a href="{% url 'blog:post_detail' post.id %}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <p class="date">
+      Опубликовано: {{ post.publish }}. Автор: {{ post.author }}
+    </p>
+    {{ post.body|truncatewords:30|linebreaks }}
+    {% endfor %}
+{% endblock %}
+
