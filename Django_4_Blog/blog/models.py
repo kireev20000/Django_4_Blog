@@ -2,6 +2,7 @@
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -28,7 +29,9 @@ class Post(models.Model):
         verbose_name='Заголовок',
         help_text='Введите заголовок',
     )
-    slug = models.SlugField(max_length=250)
+    slug = models.SlugField(max_length=250,
+                            unique_for_date='publish',
+    )
     body = models.TextField(
         'Текст поста',
         help_text='Введите текст поста',
@@ -71,6 +74,14 @@ class Post(models.Model):
         ]
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+    def get_absolute_url(self):
+        """Возвращает канонический URL поста."""
+        return reverse('blog:post_detail',
+                       args=[self.publish.year,
+                             self.publish.month,
+                             self.publish.day,
+                             self.slug])
 
     def __str__(self):
         """Возвращает заголовок поста."""
