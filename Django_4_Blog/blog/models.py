@@ -11,8 +11,8 @@ class PublishedManager(models.Manager):
 
     def get_queryset(self):
         """Возвращает кастомный кварисет с опубликоваными постами."""
-        return super().get_queryset()\
-                      .filter(status=Post.Status.PUBLISHED)
+        return super().get_queryset() \
+            .filter(status=Post.Status.PUBLISHED)
 
 
 class Post(models.Model):
@@ -29,8 +29,9 @@ class Post(models.Model):
         verbose_name='Заголовок',
         help_text='Введите заголовок',
     )
-    slug = models.SlugField(max_length=250,
-                            unique_for_date='publish',
+    slug = models.SlugField(
+        max_length=250,
+        unique_for_date='publish',
     )
     body = models.TextField(
         'Текст поста',
