@@ -87,3 +87,30 @@ class Post(models.Model):
     def __str__(self):
         """Возвращает заголовок поста."""
         return self.title
+
+
+class Comments(models.Model):
+    """Модель комментариев к посту."""
+
+    post = models.ForeignKey(Post,
+                             on_delete=models.CASCADE,
+                             related_name='comments',
+                             verbose_name='Пост')
+    name = models.CharField(max_length=80, verbose_name='Автор')
+    email = models.EmailField(verbose_name='E-mail')
+    body = models.TextField(verbose_name='Комментарий')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Создан:')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Обновлен:')
+    active = models.BooleanField(default=True, verbose_name='Показывать')
+
+    class Meta:
+        """Класс Мета модели Comments."""
+
+        ordering = ['created']
+        indexes = [models.Index(fields=['created']), ]
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+    def __str__(self):
+        """Возвращает инфу о комменте."""
+        return f'Комментарий {self.name} на пост "{self.post}"'
