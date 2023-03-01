@@ -5,14 +5,19 @@ from django.core.paginator import Paginator, EmptyPage,\
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView
+from taggit.models import Tag
 
 from .models import Post
 from .forms import EmailPostForm, CommentForm
 
 
-def post_list(request):
+def post_list(request, tag_slug=None):
     """Возвращает все посты блога на страницу."""
     posts_list = Post.published.all()
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        posts_list = posts_list.filter(tags__in=[tag])
     paginator = Paginator(posts_list, 3)
     page_number = request.GET.get('page', 1)
     try:
@@ -21,9 +26,8 @@ def post_list(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    return render(request,
-                  'blog/post/list.html',
-                  {'page_obj': posts})
+    return render(request, 'blog/post/list.html', {'page_obj': posts,
+                                                   'tag': tag})
 
 
 class PostListView(ListView):
