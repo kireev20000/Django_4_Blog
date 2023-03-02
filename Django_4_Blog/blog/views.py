@@ -56,10 +56,11 @@ def post_detail(request, year, month, day, post):
     similar_posts = similar_posts.annotate(same_tags=Count('tags')) \
                                  .order_by('-same_tags', '-publish')[:4]
 
-    return render(request, 'blog/post/detail.html', {'post': post,
-                                                     'comments': comments,
-                                                     'form': form,
-                                                     'similar_posts': similar_posts})
+    return render(request, 'blog/post/detail.html', {
+        'post': post,
+        'comments': comments,
+        'form': form,
+        'similar_posts': similar_posts})
 
 
 def post_share(request, post_id):
@@ -96,5 +97,3 @@ def post_comment(request, post_id):
     return render(request, 'blog/post/comments.html', {'post': post,
                                                        'form': form,
                                                        'comment': comment})
-
-
