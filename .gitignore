@@ -151,3 +151,4 @@ yatube/posts/static/
 yatube/media/
 
 
+/Django_4_Blog/mysite_data.json
