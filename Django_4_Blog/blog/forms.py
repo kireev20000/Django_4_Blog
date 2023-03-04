@@ -21,3 +21,9 @@ class CommentForm(forms.ModelForm):
 
         model = Comments
         fields = ['name', 'email', 'body']
+
+
+class SearchForm(forms.Form):
+    """Форма полнотекстового поиска."""
+
+    query = forms.CharField()
