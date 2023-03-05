@@ -14,11 +14,14 @@
     {% endblock %}
   </div>
   <div id="sidebar">
-    <h2>Мой блог на Джанге 4</h2>
+    <h2><a href="{% url "blog:post_list" %}">⌂</a> Мой блог на Джанге 4 ◕‿◕</h2>
     <p>Грызу гранит науки!</p>
     <p>Всего в этом блоге опубликовано {% total_posts %} постов!</p>
     <p>
-        <a href="{% url "blog:post_feed" %}">Подписаться на RSS!</a>
+      <a href="{% url "blog:post_feed" %}">Подписаться на RSS!</a>
+    </p>
+    <p>
+      <a href="{% url 'blog:post_search' %}">Поиск по блогу!</a>
     </p>
     <h3>Новые посты в блоге:</h3>
       {% show_latest_posts 3 %}
