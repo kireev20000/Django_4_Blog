@@ -1,0 +1,22 @@
+{% extends 'base_account.html' %}
+{% block title %}Страница входа.{% endblock %}
+
+{% block content %}
+  <h1>Страница входа.</h1>
+  {% if form.errors %}
+    <p>
+      Ваш логин и пароль не соответствуют нашей базе данных.
+      Введите корректные данные и попробуйте еще раз.
+    </p>
+  {% else %}
+    <p>Пожалуйста, используйте форму ниже для ввода данных.</p>
+  {% endif %}
+  <div class="login-form">
+    <form action="{% url 'auth:login' %}" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p><input type="submit" value="Войти"></p>
+    </form>
+  </div>
+{% endblock %}

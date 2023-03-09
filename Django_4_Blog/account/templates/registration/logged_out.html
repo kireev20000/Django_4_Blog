@@ -1,0 +1,10 @@
+{% extends 'base_account.html' %}
+{%  block title %}Страница выхода.{% endblock %}
+
+{% block content %}
+  <h1>Вы вышли из сайта!</h1>
+  <p>
+    Вы успешно вышли из системы!
+    Чтобы повторной войти нажмите <a href="{% url 'auth:login' %}">сюда!</a>
+  </p>
+{% endblock %}

@@ -9,6 +9,30 @@
 <body>
   <div id="header">
     <span class="logo">Страница аутентификации</span>
+      {% if request.user.is_authenticated %}
+      <ul class="menu">
+        <li {% if section == "dashboard" %}class="selected"{% endif %}>
+          <a href="{% url "auth:dashboard" %}">Дашбоард</a>
+        </li>
+        <li {% if section == "blog_post_list" %}class="selected"{% endif %}>
+          <a href="{% url 'blog:post_list' %}">Блог</a>
+        </li>
+        <li {% if section == "images" %}class="selected"{% endif %}>
+          <a href="#">Картинки</a>
+        </li>
+        <li {% if section == "people" %}class="selected"{% endif %}>
+          <a href="#">Люди</a>
+        </li>
+      </ul>
+      {% endif %}
+      <span class="user">
+        {% if request.user.is_authenticated %}
+          Привет {{ request.user.first_name|default:request.user.username }},
+          <a href="{% url 'auth:logout' %}">Выйти</a>
+        {% else %}
+          <a href="{% url 'auth:login' %}">Войти</a>
+        {% endif %}
+      </span>
   </div>
     <div id="content">
       {% block content %}
