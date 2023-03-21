@@ -9,4 +9,7 @@
     {% csrf_token %}
     <p><input type="submit" value="Вход"></p>
   </form>
+  <p>
+    Если у вас нет аккаутна на нашем сайте, вы можете <a href="{% url 'auth:register' %}">создать его здесь</a>
+  </p>
 {% endblock %}
