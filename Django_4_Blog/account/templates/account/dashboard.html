@@ -2,6 +2,11 @@
 {% block title %}Панель Управления{% endblock %}
 
 {% block content %}
-  <h1>Dashboard</h1>
-  <p>Welcome to your dashboard.</p>
+  <h1>Управление вашим аккаунтом.</h1>
+  <p>Добро пожаловать в панель управления ваших аккаунтом.</p>
+  <p>
+    Вы можете <a href="{% url 'auth:edit' %}">отредактивать</a> ваш профиль,
+    или <a href="{% url 'auth:password_change' %}">сменить</a> ваш пароль.
+  </p>
+
 {% endblock %}

@@ -146,3 +146,4 @@ dmypy.json
 .mypy_cache
 
 /Django_4_Blog/mysite_data.json
+/Django_4_Blog/media/
