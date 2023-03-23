@@ -1,24 +1,18 @@
 {% load blog_tags %}
-{% load blog_tags %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+
 </head>
 <body>
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li class="{{ message.tags }}">
-          {{ message|safe }}
-          <a href="#" class="close">x</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+  <header>
+    {% include 'includes/head_menu.html' %}
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+  </header>
+
   <div id="content">
     {% block content %}
     {% endblock %}

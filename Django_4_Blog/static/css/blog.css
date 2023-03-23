@@ -35,10 +35,10 @@ h2 {
 }
 
 p.date { 
-    color:#ccc;
+    color: #323030;
     font-family: georgia, serif;
     font-size: 12px;
-    font-style: italic;
+    font-style: bold;
 }
 
 /* pagination */
