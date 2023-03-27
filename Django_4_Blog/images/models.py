@@ -41,7 +41,7 @@ class Image(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        """Автослагифаер при его отсутствие."""
+        """Автослагифаер при его отсутствие.."""
         if not self.slug:
             self.slug = slugify(self.title)
         super.save(*args, **kwargs)
