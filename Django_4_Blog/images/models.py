@@ -17,7 +17,7 @@ class Image(models.Model):
                             blank=True)
     url = models.URLField(max_length=2000)
     image = models.ImageField(upload_to='images/%Y/%m/%d',
-                              verbose_name='Изображение')
+                              verbose_name='Изображение:')
     description = models.TextField(blank=True,
                                    verbose_name='Описание')
     created = models.DateTimeField(auto_now_add=True,
