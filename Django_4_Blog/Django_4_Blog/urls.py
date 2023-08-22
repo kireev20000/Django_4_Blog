@@ -33,6 +33,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
     path('auth/', include('account.urls', namespace='account')),
+    path('images/', include('images.urls', namespace='images')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Добавить картинку в избранное! {% endblock %}
+
+{% block content %}
+  <h1>Добавить картинку</h1>
+  <img src="{{ request.GET.url }}" class="image-preview">
+  <form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+  <input type="submit" value="Добавить в коллекцию.">
+  </form>
+{% endblock %}

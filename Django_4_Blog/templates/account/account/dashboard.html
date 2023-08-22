@@ -4,6 +4,11 @@
 {% block content %}
   <h1>Управление вашим аккаунтом.</h1>
   <p>Добро пожаловать в панель управления ваших аккаунтом.</p>
+    {% with total_images_created=request.user.images_created.count %}
+    <p>Всего вы добавили в избранное {{ total_images_created }} картинок.</p>
+  {% endwith %}
+  <p>Перетащите эту кнопку на вашу панель закладок и используйте её для сохранение картинок на других сайтах
+      → <a href="javascript:{% include "images/bookmarklet_launcher.js" %}" class="button">В закладки</a></p>
   <p>
     Вы можете <a href="{% url 'auth:edit' %}">отредактивать</a> ваш профиль,
     или <a href="{% url 'auth:password_change' %}">сменить</a> ваш пароль.
