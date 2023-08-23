@@ -7,7 +7,6 @@ from .forms import ImageCreateForm
 @login_required
 def image_create(request):
     if request.method == 'POST':
-        # form is sent
         form = ImageCreateForm(data=request.POST)
         if form.is_valid():
             cd = form.cleaned_data
