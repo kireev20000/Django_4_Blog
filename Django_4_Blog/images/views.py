@@ -3,8 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse, HttpResponse
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import get_object_or_404
+
 
 from .models import Image
 from .forms import ImageCreateForm
@@ -74,3 +75,4 @@ def image_list(request):
                   'images/image/list.html',
                    {'section': 'images',
                     'images': images})
+
