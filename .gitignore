@@ -149,3 +149,4 @@ dmypy.json
 /Django_4_Blog/cert.crt
 /Django_4_Blog/cert.key
 /Django_4_Blog/media/
+/kata.py
