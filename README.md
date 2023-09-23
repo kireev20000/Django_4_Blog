@@ -1,6 +1,6 @@
 # Django 4 Pet PlayGround
 
-Work-In-Progress. Pet-проект для экспериментов с Django 4 и async.
+Work-In-Progress. Pet-проект для экспериментов с Django 4.
  
 ***
 # Особенности проекта
