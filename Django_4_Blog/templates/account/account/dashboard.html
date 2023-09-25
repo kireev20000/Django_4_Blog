@@ -13,5 +13,10 @@
     Вы можете <a href="{% url 'auth:edit' %}">отредактивать</a> ваш профиль,
     или <a href="{% url 'auth:password_change' %}">сменить</a> ваш пароль.
   </p>
-
+  <h2>Лента Активностей</h2>
+  <div id="action-list">
+    {% for action in actions %}
+    {% include "actions/action/detail.html" %}
+    {% endfor %}
+  </div>
 {% endblock %}

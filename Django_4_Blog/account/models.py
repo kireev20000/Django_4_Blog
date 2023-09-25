@@ -45,6 +45,7 @@ class Contact(models.Model):
         return f'{self.user_from} подписался на {self.user_to}'
 
 
+# Метод add_to_class() динамически подправляет модель User
 user_model = get_user_model()
 user_model.add_to_class('following',
                         models.ManyToManyField('self',
