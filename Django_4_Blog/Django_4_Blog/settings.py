@@ -49,12 +49,14 @@ INSTALLED_APPS = [
     'django_extensions',
     'easy_thumbnails',
     'taggit',
+    'debug_toolbar',
     'blog.apps.BlogConfig',
     'images.apps.ImagesConfig',
     'actions.apps.ActionsConfig',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -97,6 +99,9 @@ DATABASES = {
     }
 }
 
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -159,3 +164,8 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user': lambda u: reverse_lazy('auth:user_detail',
                                         args=[u.username])
 }
+
+#для дебаг-панели, пускает только по этим адресам
+INTERNAL_IPS = [
+'127.0.0.1',
+]
